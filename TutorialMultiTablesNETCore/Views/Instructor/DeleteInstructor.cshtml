@@ -1,0 +1,27 @@
+﻿@using TutorialMultiTablesNETCore.Models
+@model Instructor
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <h3>Eliminar Instructor</h3>​
+            <h6>¿Seguro que desea eliminar este registro?</h6>
+            <form asp-controller="Instructor" asp-action="DeleteInstructor" method="post">​
+                <input type="hidden" asp-for="Actividad.ActividadId" />
+                <div class="form-group">
+                    <label asp-for="InstructorId">ID</label>​
+                    <input asp-for="InstructorId" class="form-control" readonly="readonly" />​
+                    <label asp-for="Nombre">Nombre</label>​
+                    <input asp-for="Nombre" class="form-control" readonly="readonly" />​
+                    <label asp-for="Actividad.Nombre">Actividad</label>​
+                    <input asp-for="Actividad.Nombre" class="form-control" readonly="readonly" />​
+                </div>
+                <br />​
+                <div class="text-center">
+                    <button asp-controller="Instructor" asp-action="AllInstructores" class="btn btn-secondary">Cancelar</button> 
+                    <button type="submit" class="btn btn-danger">Eliminar</button>​ 
+                </div>
+            </form>​
+        </div>
+    </div>
+</div>

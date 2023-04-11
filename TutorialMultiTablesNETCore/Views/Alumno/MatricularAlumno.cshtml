@@ -1,0 +1,42 @@
+﻿@using TutorialMultiTablesNETCore.ViewModels
+@model MatriculaAlumnoViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>Información de la Actividad</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Plazas</th>
+                </tr>
+                <tr>
+                    <td>@ViewBag.Actividad.ActividadId</td>
+                    <td>@ViewBag.Actividad.Nombre</td>
+                    <td>@ViewBag.Actividad.Plazas</td>
+                </tr>
+            </table>
+            @{
+                if (ViewBag.Actividad.Plazas > 0)
+                {
+                    <form asp-controller="Alumno" asp-action="MatricularAlumno" method="post">
+                        <div class="form-group text-center">
+                            <br />
+                            <label asp-for="Matricula.Alumno.Nombre">¿Qué alumno desea inscribir?</label><br /><br>
+                            <select asp-for="Matricula.Alumno.AlumnoId" asp-items="@Model.ListaAlumnos" class="form-control-sm"></select>
+                            <input asp-for="Matricula.Actividad.ActividadId" type="hidden" value="@ViewBag.Actividad.ActividadId" />
+                            <br />
+                            <br />
+                            <br />
+                            <div class="text-center">
+                                <a asp-controller="Actividad" asp-action="AllActividades" class="btn btn-secondary">Cancelar</a>
+                                <button type="submit" class="btn btn-success">Inscribir</button>
+                            </div>
+                        </div>
+                    </form>
+                }
+            }
+        </div>
+    </div>
+</div>

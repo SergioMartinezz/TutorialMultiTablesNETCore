@@ -1,0 +1,21 @@
+﻿@using TutorialMultiTablesNETCore.Models
+@model Alumno
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 offset-md-3">
+            <h3>Añade un Alumno</h3>
+            <form asp-controller="Alumno" asp-action="AddAlumno" method="post">
+                <div class="form-group">
+                    <label asp-for="Nombre">Nombre del alumno</label>
+                    <input asp-for="Nombre" class="form-control" />
+                </div>
+                <br />
+                <div class="text-center">
+                    <a asp-controller="Alumno" asp-action="AllAlumnos" class="btn btn-secondary">Volver a Alumnos</a>
+                    <button type="submit" class="btn btn-success">Añadir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

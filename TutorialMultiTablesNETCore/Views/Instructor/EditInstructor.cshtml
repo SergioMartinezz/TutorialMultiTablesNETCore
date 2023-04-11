@@ -1,0 +1,27 @@
+﻿@using TutorialMultiTablesNETCore.ViewModels
+@model AddActividadViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <h3>Editar Instructor</h3>​
+            <form asp-controller="Instructor" asp-action="EditInstructor" method="post">​
+                <div class="form-group">
+                    <input asp-for="Instructor.Actividad" type="hidden" />​
+                    <label asp-for="Instructor.Nombre">Nombre Instructor</label>​
+                    <input asp-for="Instructor.Nombre" class="form-control" readonly="readonly" />​
+                    <br />
+                    <label asp-for="Actividad.Nombre">Actividad</label>
+                    <select asp-for="Actividad.ActividadId" asp-items="@Model.ListaActividades" class="form-control">
+                        <option></option>
+                    </select>
+                </div>
+                <br />​
+                <div class="text-center">
+                    <a asp-controller="Instructor" asp-action="AllInstructores" class="btn btn-secondary">Cancelar</a> 
+                    <button type="submit" class="btn btn-success">Actualizar</button>​
+                </div>
+            </form>​
+        </div>
+    </div>
+</div>

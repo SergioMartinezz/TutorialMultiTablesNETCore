@@ -1,0 +1,33 @@
+﻿@using TutorialMultiTablesNETCore.Models
+@model IEnumerable<Alumno>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>@ViewData["Actividad"]</h2>
+            <br />
+            @{
+                if (Model.Count() < 1)
+                {
+                    <p>No hay alumnos registrados en esta actividad.</p>
+                }
+                else
+                {
+                    <h3>Alumnos Inscritos</h3>
+                    <table class="table table-striped">
+                        <tr><th>ID</th><th>Nombre</th></tr>
+                        @foreach (var alumno in Model)
+                        {
+                            <tr>
+                                <td>@alumno.AlumnoId</td>
+                                <td>@alumno.Nombre</td>
+                            </tr>
+                        }
+                    </table>
+                }
+            }
+            <br />
+            <p><a asp-controller="Actividad" asp-action="AllActividades" class="btn btn-secondary">Volver a Actividades</a></p>
+        </div>
+    </div>
+</div>

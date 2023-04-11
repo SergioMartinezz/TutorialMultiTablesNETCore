@@ -1,0 +1,59 @@
+﻿@using TutorialMultiTablesNETCore.Models
+@model IEnumerable<Actividad>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <p>
+                <a asp-controller="Actividad" asp-action="AddActividad" class="btn btn-dark">Añadir Nueva Actividad</a>
+            </p>
+            @{
+                if (Model.Count() < 1)
+                {
+                    <h6 class="text-danger">No existen actividades registradas aún.</h6>
+                }
+                else
+                {
+                    <h3>Todas las Actividades</h3>
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Plazas</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var actividades in Model)
+                                {
+                                    <tr>
+                                        <td>@actividades.ActividadId</td>
+                                        <td>@actividades.Nombre</td>
+                                        <td>@actividades.Plazas</td>
+                                        <td>
+                                            <a asp-controller="Alumno" asp-action="MatricularAlumno" asp-route-id="@actividades.ActividadId" class="btn btn-outline-secondary btn-sm">Inscribir Alumno</a>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Alumno" asp-action="InscribedAlumno" asp-route-id="@actividades.ActividadId" class="btn btn-outline-secondary btn-sm">Alumnos Inscritos</a>
+                                        </td>
+                                        <td>
+                                            <a asp-action="EditActividad" asp-route-id="@actividades.ActividadId" class="btn btn-warning btn-sm">Editar</a>
+                                        </td>
+                                        <td>
+                                            <a asp-action="DeleteActividad" asp-route-id="@actividades.ActividadId" class="btn btn-danger btn-sm">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            }
+        </div>
+    </div>
+</div>

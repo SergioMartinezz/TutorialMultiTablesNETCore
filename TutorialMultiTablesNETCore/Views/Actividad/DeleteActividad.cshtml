@@ -1,0 +1,26 @@
+﻿@using TutorialMultiTablesNETCore.Models
+@model Actividad
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <h3>Eliminar Actividad</h3>​
+            <h6>¿Seguro que desea eliminar esta actividad?</h6>
+            <form asp-controller="Actividad" asp-action="DeleteActividad" method="post">​
+                <div class="form-group">
+                    <label asp-for="ActividadId">ID</label>​
+                    <input asp-for="ActividadId" class="form-control" readonly="readonly" />​
+                    <label asp-for="Nombre">Department Name</label>​
+                    <input asp-for="Nombre" class="form-control" readonly="readonly" />​
+                    <label asp-for="Plazas"></label>​
+                    <input asp-for="Plazas" class="form-control" readonly="readonly" />​
+                </div>
+                <br />​
+                <div class="text-center">
+                    <button asp-controller="Actividad" asp-action="AllActividades" class="btn btn-secondary">Cancelar</button> 
+                    <button type="submit" class="btn btn-danger">Eliminar</button>​ 
+                </div>
+            </form>​
+        </div>
+    </div>
+</div>

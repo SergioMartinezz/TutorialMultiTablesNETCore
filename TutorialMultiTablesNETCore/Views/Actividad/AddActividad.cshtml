@@ -1,0 +1,23 @@
+﻿@using TutorialMultiTablesNETCore.Models
+@model Actividad
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 offset-md-3">
+            <h3>Añadir Actividad</h3>
+            <form asp-controller="Actividad" asp-action="AddActividad" method="post">
+                <div class="form-group">
+                    <label asp-for="Nombre">Nombre de la Actividad</label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <br />
+                    <label asp-for="Plazas">Número de Plazas</label>
+                    <input asp-for="Plazas" class="form-control" />
+                </div>
+                <br />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success">Añadir Actividad</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

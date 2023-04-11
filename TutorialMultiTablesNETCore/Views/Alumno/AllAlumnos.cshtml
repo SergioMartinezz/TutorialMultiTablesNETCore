@@ -1,0 +1,49 @@
+﻿@using TutorialMultiTablesNETCore.Models
+@model IEnumerable<Alumno>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 offset-md-3">
+            <p>
+                <a asp-controller="Alumno" asp-action="AddAlumno" class="btn btn-dark">Añadir Alumno</a>
+            </p>
+            @{
+                if (Model.Count() < 1)
+                {
+                    <h6 class="text-danger">No existe alumnos en la base de datos!</h6>
+                }
+                else
+                {
+                    <h3>Alumnos</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var alumno in Model)
+                                {
+                                    <tr>
+                                        <td>@alumno.AlumnoId</td>
+                                        <td>@alumno.Nombre</td>
+                                        <td>
+                                            <a asp-action="EditAlumno" asp-route-id="@alumno.AlumnoId" class="btn btn-warning btn-sm">Editar</a>
+                                        </td>
+                                        <td>
+                                            <a asp-action="DeleteAlumno" asp-route-id="@alumno.AlumnoId" class="btn btn-danger btn-sm">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            }
+        </div>
+    </div>
+</div>

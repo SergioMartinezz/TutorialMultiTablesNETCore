@@ -1,0 +1,53 @@
+﻿@using TutorialMultiTablesNETCore.Models
+@model IEnumerable<Instructor>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 offset-md-1">
+            <p>
+                <a asp-controller="Instructor" asp-action="AddInstructor" class="btn btn-dark">Añadir Nuevo Instructor</a>
+            </p>
+            @{
+                if (Model.Count() < 1)
+                {
+                    <h6 class="text-danger">No existen instructores en la base de datos aún.</h6>
+                }
+                else
+                {
+                    <h3>Instructores</h3>
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Actividad</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var instructor in Model)
+                                {
+                                    <tr>
+                                        <td>@instructor.InstructorId</td>
+                                        <td>@instructor.Nombre</td>
+                                        <td><a asp-controller="Actividad" asp-action="ActividadDetails" asp-route-id="@instructor.Actividad.ActividadId">@instructor.Actividad.Nombre</a></td>
+                                        <td>
+                                            <a asp-action="EditInstructor" asp-route-id="@instructor.InstructorId" class="btn btn-warning btn-sm">Editar</a>
+                                        </td>
+                                        <td>
+                                            <a asp-action="DeleteInstructor" asp-route-id="@instructor.InstructorId" class="btn btn-danger btn-sm">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            }
+        </div>
+    </div>
+</div>
